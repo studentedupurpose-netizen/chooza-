@@ -3,7 +3,6 @@ const express=require("express"), helmet=require("helmet"), cors=require("cors")
 const bcrypt=require("bcryptjs"), jwt=require("jsonwebtoken"), {z}=require("zod");
 const db=require("./db"), auth=require("./auth");
 const app=express();
-app.set('trust proxy', 1);
 if(!process.env.JWT_SECRET||process.env.JWT_SECRET.length<32) throw new Error("Set JWT_SECRET to a random secret of at least 32 characters.");
 app.use(helmet());
 app.use(cors({origin:(process.env.FRONTEND_ORIGIN||"http://localhost:8888").split(","),methods:["GET","POST","PATCH","DELETE"],allowedHeaders:["Content-Type","Authorization"]}));
